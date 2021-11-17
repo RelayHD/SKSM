@@ -13,11 +13,15 @@
 </nav>
 <body>
     {% for p in posts %}
-
     <hr/>
     <h2>{{p.title}}</h2>
-    <p>{{p.content}}</p>
+        {% for img in p.images.all %}
+        <img src="{{ img.image.url }}" alt="">
+        <script>console.log("{{ img.image.url }}")</script>
+        {% endfor %}
 
+
+    <p>{{p.content}}</p>
     {% endfor %}
 </body>
 </html>
