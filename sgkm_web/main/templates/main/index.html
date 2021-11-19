@@ -14,14 +14,15 @@
 <body>
     {% for p in posts %}
     <hr/>
-    <h2>{{p.title}}</h2>
+    <div><pre>{{p.paragraph_1}}</pre></div>
+    <div><pre>{{p.paragraph_2}}</pre></div>
+    <img src="{{ p.first_image.url }}" alt="">
         {% for img in p.images.all %}
         <img src="{{ img.image.url }}" alt="">
         <script>console.log("{{ img.image.url }}")</script>
         {% endfor %}
-
-
-    <p>{{p.content}}</p>
+    <div><pre>{{p.paragraph_3}}</pre></div>
+    <div><pre>{{p.paragraph_4}}</pre></div>
     {% endfor %}
 </body>
 </html>

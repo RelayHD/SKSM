@@ -4,6 +4,7 @@ from .models import Post, PostImages
 
 def index(request):
     posts= Post.objects.all().order_by('-created_at')
+
     # photos= PostImages.objects.all().order_by()
     return render(
         request,

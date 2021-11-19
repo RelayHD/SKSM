@@ -2,7 +2,11 @@ from django.db import models
 
 class Post(models.Model):
     title = models.CharField(max_length=30)
-    content= models.TextField()
+    paragraph_1= models.TextField()
+    paragraph_2= models.TextField()
+    paragraph_3= models.TextField()
+    paragraph_4= models.TextField()
+
     created_at= models.DateTimeField()
     first_image= models.ImageField(blank=True)
 
