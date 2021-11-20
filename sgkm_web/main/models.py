@@ -1,14 +1,14 @@
 from django.db import models
 
 class Post(models.Model):
-    title = models.CharField(max_length=30)
-    paragraph_1= models.TextField()
-    paragraph_2= models.TextField()
-    paragraph_3= models.TextField()
-    paragraph_4= models.TextField()
+    title = models.CharField(max_length=30, blank=True, null=True)
+    paragraph_1= models.TextField(blank=True, null=True)
+    paragraph_2= models.TextField(blank=True, null=True)
+    paragraph_3= models.TextField(blank=True, null=True)
+    paragraph_4= models.TextField(blank=True, null=True)
 
     created_at= models.DateTimeField()
-    first_image= models.ImageField(blank=True)
+    first_image= models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return f'[{self.pk}]{self.title}'

@@ -1,28 +1,61 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGKM</title>
-</head>
-<nav>
-    <a href="/profile/">Profile</a>
-    <a href="/contact/">Contact</a>
+    <meta name="description" content="sksm">
+    <meta property="og:type" content=”website">
+    <meta property="og:title" content="sksm">
+    <meta property="og:description" content="sksm">
+    <meta property="og:image" content="">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-</nav>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>SKSM</title>
+</head>
+<div class="nav_container">
+    <nav>
+        <div class="nav"><a href="/">SK</a> </div>
+        <div class="nav" id="plus">&</div>
+
+    </nav>
+    <div class="dropdown">
+        <a class="nav_menu" href="/profile/">김성구 <br> SKSM </a>
+        <div class="nav_menu">
+            {% for year in years %}
+            <a href="/year/{{year}}">{{year}}</a>
+            {% endfor %}
+        </div>
+        <div class="nav_menu">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q"
+                    value="{{q}}">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <body>
-    {% for p in posts %}
-    <hr/>
-    <div><pre>{{p.paragraph_1}}</pre></div>
-    <div><pre>{{p.paragraph_2}}</pre></div>
-    <img src="{{ p.first_image.url }}" alt="">
-        {% for img in p.images.all %}
-        <img src="{{ img.image.url }}" alt="">
-        <script>console.log("{{ img.image.url }}")</script>
-        {% endfor %}
-    <div><pre>{{p.paragraph_3}}</pre></div>
-    <div><pre>{{p.paragraph_4}}</pre></div>
-    {% endfor %}
+    {% block content %}
+    {% endblock %}
+    {% if posts.has_previous %}
+    <!-- <a href="?page=1"><-</a> -->
+    <a href="?page={{posts.previous_page_number}}">
+    <-</a> 
+    {% endif %} 
+    {% if posts.has_next %} 
+    <a href="?page={{posts.next_page_number}}">->
+    </a>
+    {% endif %}
 </body>
+
 </html>

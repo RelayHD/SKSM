@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGKM_{{post.tag}}</title>
-</head>
-<nav>
-    <a href="/main/">SKSG</a>  
-</nav>
+{% extends 'main/index.html' %}
+{% block content %}
 <body>
     <hr/>
     <h2>{{post.title}}</h2>
     <p>{{post.content}}</p>
 </body>
-</html>
+{% endblock %}

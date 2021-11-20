@@ -1,0 +1,33 @@
+{% extends 'main/index.html' %}
+{% block content %}
+
+{% if not posts %}
+<p>게시물이 존재하지 않습니다.</p>
+{% else %}
+<div class=container>
+
+    {% for p in posts %}
+    <div class="article">
+        <div class="txt_title">{{p.title}}</div>
+        {% if p.first_image %}
+        <img src="{{ p.first_image.url }}" alt="">
+        {% endif %}
+<div class="txt_row">
+    <div>{{p.paragraph_1|linebreaksbr}}</div>
+    <div>{{p.paragraph_2|linebreaksbr}}</div>
+    <div>{{p.paragraph_3|linebreaksbr}}</div>
+    <div>{{p.paragraph_4|linebreaksbr}}</div>
+</div>
+    {% for img in p.images.all %}
+        <img src="{{ img.image.url }}" alt="">
+        <script>
+            console.log("{{ img.image.url }}")
+        </script>
+        {% endfor %}
+
+        <hr />
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

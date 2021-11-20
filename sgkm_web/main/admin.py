@@ -7,7 +7,7 @@ class PostImagesInline(admin.StackedInline):
 
 @admin.register(Post)#데코레이터 장점 : 간편함.
 class PostAdmin(admin.ModelAdmin):
-    inlines = (PostImagesInline,)#앨범 객체 수정 화면을 보여줄 때 PhotoInline에서 정의한 사항을 보여줌.
+    inlines = (PostImagesInline,)
     list_display = ('id', 'title')
 
 @admin.register(PostImages)

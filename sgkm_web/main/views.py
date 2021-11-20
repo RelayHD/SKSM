@@ -1,29 +1,88 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404,redirect
 from django.urls.resolvers import URLPattern
-from .models import Post, PostImages
+from django.core.paginator import Paginator
+from .models import Post
 
 def index(request):
     posts= Post.objects.all().order_by('-created_at')
-
-    # photos= PostImages.objects.all().order_by()
+    
+    years=[]
+    for post in posts:
+        created_at= post.created_at
+        year= created_at.year
+        years.append(year)
+    years= list(set(years))
+    
+    paginator = Paginator(posts, 5)
+    page= request.GET.get('page')
+    post_a_page= paginator.get_page(page)
     return render(
         request,
-        'main/index.html',
+        'main/postlist.html',
         {
-            'posts':posts,
-            # 'photos':photos
+            'years':years,
+            'posts':post_a_page,
         }
     )
 
 def single_post_page(request, pk):
+    posts= Post.objects.all().order_by('-created_at')
+
     post= Post.objects.get(pk=pk)
-    photos= PostImages.objects.filter(post=post)
+    
+    years=[]
+    for p in posts:
+        created_at= p.created_at
+        year= created_at.year
+        years.append(year)
+    years= list(set(years))
 
     return render(
         request,
         'main/single_post_page.html',
         {
-            'post': post,
-            'photos': photos
+            'years': years,
+            'p': post,
         }
     )
+
+def search(request):
+    posts= Post.objects.all().order_by('-created_at')
+    
+    years=[]
+    for post in posts:
+        created_at= post.created_at
+        year= created_at.year
+        years.append(year)
+    years= list(set(years))
+
+    q= request.POST.get('q',"")
+
+    if q:
+        posts= posts.filter(title__icontains=q)
+        paginator = Paginator(posts, 5)
+        page= request.GET.get('page')
+        post_a_page= paginator.get_page(page)
+        return render(request, 'main/postlist.html', {'years':years,'posts':post_a_page,'q' : q})
+    else:
+        return render(request, 'main/postlist.html', {'years':years})
+
+def year(request, year):
+    posts= Post.objects.all().order_by('-created_at')
+
+    years=[]
+    for post in posts:
+        created_at= post.created_at
+        ayear= created_at.year
+        years.append(ayear)
+    years= list(set(years))
+
+    year= year
+    if year:
+        posts= posts.filter(created_at__year=year)
+        paginator = Paginator(posts, 5)
+        page= request.GET.get('page')
+        post_a_page= paginator.get_page(page)
+        return render(request, 'main/postlist.html', {'years':years,'posts':post_a_page})
+    else:
+        return render(request, 'main/postlist.html', {'years':years})
