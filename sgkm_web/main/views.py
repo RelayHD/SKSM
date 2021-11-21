@@ -12,7 +12,7 @@ def index(request):
         year= created_at.year
         years.append(year)
     years= list(set(years))
-    
+    years.sort(reverse=True)
     paginator = Paginator(posts, 5)
     page= request.GET.get('page')
     post_a_page= paginator.get_page(page)
@@ -36,7 +36,7 @@ def single_post_page(request, pk):
         year= created_at.year
         years.append(year)
     years= list(set(years))
-
+    years.sort(reverse=True)
     return render(
         request,
         'main/single_post_page.html',
@@ -55,7 +55,7 @@ def search(request):
         year= created_at.year
         years.append(year)
     years= list(set(years))
-
+    years.sort(reverse=True)
     q= request.POST.get('q',"")
 
     if q:
@@ -76,6 +76,7 @@ def year(request, year):
         ayear= created_at.year
         years.append(ayear)
     years= list(set(years))
+    years.sort(reverse=True)
 
     year= year
     if year:
