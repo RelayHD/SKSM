@@ -132,3 +132,47 @@ margin: 90px 0px;
 .btn{
     cursor:pointer;
 }
+.btn_prev{
+    position:relative;
+    width:50px;
+    height:32px;
+    background-image:url('arrow_prev.svg');
+    background-repeat:no-repeat;
+    float:left;
+}
+.btn_next{
+    position:relative;
+    width:50px;
+    height:32px;
+    background-image:url('arrow_next.svg');
+    background-repeat:no-repeat;
+    float:right;
+}
+.btn_none{
+    position:relative;
+    width:50px;
+    height:32px;
+    background-image:none;
+    background-repeat:no-repeat;
+    float:right;
+}
+.dtimg{
+    margin:25px;
+}
+.credit{
+    display: inline-block;
+    position: relative;
+    width:auto;
+}
+.footer{
+    display:flex;
+    height:32px;
+    align-items:center;
+    bottom:15px;
+    justify-content: space-between;
+
+}
+.footer a{
+    height:32px;
+    width:50px;
+}

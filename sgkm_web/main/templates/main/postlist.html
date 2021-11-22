@@ -4,7 +4,6 @@
 {% if not posts %}
 <p>게시물이 존재하지 않습니다.</p>
 {% else %}
-<div class=container>
 
     {% for p in posts %}
     <div class="article">
@@ -19,7 +18,7 @@
     <div>{{p.paragraph_4|linebreaksbr}}</div>
 </div>
     {% for img in p.images.all %}
-        <img src="{{ img.image.url }}" alt="">
+        <img class="dtimg" src="{{ img.image.url }}" alt="" >
         <script>
             console.log("{{ img.image.url }}")
         </script>
@@ -28,6 +27,5 @@
         <hr />
     </div>
     {% endfor %}
-</div>
 {% endif %}
 {% endblock %}

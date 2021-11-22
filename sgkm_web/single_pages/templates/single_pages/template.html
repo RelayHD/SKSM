@@ -1,10 +1,10 @@
 {% extends 'main/index.html' %}
 {% block content %}
 <body>
-    <hr/>
     {% for post in p %}
+    <div class=container>
+
     <div class="article">
-        <div class="txt_title">{{post.title}}</div>
     <div class="txt_row">
         <div>{{post.paragraph_1|linebreaksbr}}</div>
         <div>{{post.paragraph_2|linebreaksbr}}</div>
@@ -13,5 +13,6 @@
     </div>
     </div>
     {% endfor %}
+    </div>
 </body>
 {% endblock %}
