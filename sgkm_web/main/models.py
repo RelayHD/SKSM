@@ -20,3 +20,4 @@ class PostImages(models.Model):
     
     def __str__(self):
         return f'[{self.post.pk}]{self.post.title}'
+
