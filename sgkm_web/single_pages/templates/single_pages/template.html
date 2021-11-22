@@ -2,14 +2,16 @@
 {% block content %}
 <body>
     <hr/>
+    {% for post in p %}
     <div class="article">
-        <div class="txt_title">{{p.title}}</div>
+        <div class="txt_title">{{post.title}}</div>
     <div class="txt_row">
-        <div>{{p.paragraph_1|linebreaksbr}}</div>
-        <div>{{p.paragraph_2|linebreaksbr}}</div>
-        <div>{{p.paragraph_3|linebreaksbr}}</div>
-        <div>{{p.paragraph_4|linebreaksbr}}</div>
+        <div>{{post.paragraph_1|linebreaksbr}}</div>
+        <div>{{post.paragraph_2|linebreaksbr}}</div>
+        <div>{{post.paragraph_3|linebreaksbr}}</div>
+        <div>{{post.paragraph_4|linebreaksbr}}</div>
     </div>
     </div>
+    {% endfor %}
 </body>
 {% endblock %}

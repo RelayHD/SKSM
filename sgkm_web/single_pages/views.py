@@ -18,7 +18,7 @@ def profile(request):
         request,
         'single_pages/template.html',
         {
-            'post': post,
+            'p': post,
             'years':years
         }
     )
@@ -38,7 +38,7 @@ def contact(request):
         request,
         'single_pages/template.html',
         {
-            'post': post,
+            'p': post,
             'years': years
         }
     )
