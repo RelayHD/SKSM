@@ -7,22 +7,25 @@
 <div class=container>
 
     {% for p in posts %}
+
     <div class="article">
         <div class="txt_title">{{p.title}}</div>
         {% if p.first_image %}
         <img src="{{ p.first_image.url }}" alt="">
         {% endif %}
-<div class="txt_row">
-    <div>{{p.paragraph_1|linebreaksbr}}</div>
-    <div>{{p.paragraph_2|linebreaksbr}}</div>
-    <div>{{p.paragraph_3|linebreaksbr}}</div>
-    <div>{{p.paragraph_4|linebreaksbr}}</div>
-</div>
-    {% for img in p.images.all %}
+        {%for text_num in p.textrow.all%}
+        <div class="txt_row">
+            <div>{{text_num.paragraph_1|linebreaksbr}}</div>
+            <div>{{text_num.paragraph_2|linebreaksbr}}</div>
+            <div>{{text_num.paragraph_3|linebreaksbr}}</div>
+            <div>{{text_num.paragraph_4|linebreaksbr}}</div>
+        </div>
+        {% for img in text_num.images.all %}
         <img src="{{ img.image.url }}" alt="">
         <script>
             console.log("{{ img.image.url }}")
         </script>
+        {% endfor %}
         {% endfor %}
 
         <hr />
