@@ -1,6 +1,6 @@
 {% extends 'main/index.html' %}
 {% block content %}
-
+{% load urlize_extra %}
 {% if not posts %}
 <p>게시물이 존재하지 않습니다.</p>
 {% else %}
@@ -15,10 +15,10 @@
         {% endif %}
         {%for text_num in p.textrow.all%}
         <div class="txt_row">
-            <div>{{text_num.paragraph_1|linebreaksbr}}</div>
-            <div>{{text_num.paragraph_2|linebreaksbr}}</div>
-            <div>{{text_num.paragraph_3|linebreaksbr}}</div>
-            <div>{{text_num.paragraph_4|linebreaksbr}}</div>
+            <div>{{text_num.paragraph_1|add_link|safe|linebreaksbr}}</div>
+            <div>{{text_num.paragraph_2|add_link|safe|linebreaksbr}}</div>
+            <div>{{text_num.paragraph_3|add_link|safe|linebreaksbr}}</div>
+            <div>{{text_num.paragraph_4|add_link|safe|linebreaksbr}}</div>
         </div>
         {% for img in text_num.images.all %}
         <img src="{{ img.image.url }}" alt="">
