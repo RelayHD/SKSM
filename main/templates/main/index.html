@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="sksm">
+    <meta property="og:type" content=”website">
+    <meta property="og:title" content="sksm">
+    <meta property="og:description" content="sksm">
+    <meta property="og:image" content="">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>SKSM</title>
+</head>
+<div class="nav_container">
+    <nav>
+        <div class="nav"><a href="/">SK</a> </div>
+        <div class="nav btn" id="plus">&</div>
+    </nav>
+    <div class="dropdown">
+       <div class="nav_menu">
+        <a class="nav_menu" href="/profile/">김성구</a><a class="nav_menu" href="/profile/"> SKSM </a></div>
+        <div class="nav_menu">
+            {% for year in years %}
+            <a class="nav_menu" href="/year/{{year}}">{{year}}</a>
+            {% endfor %}
+        </div>
+        <div class="nav_menu">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2 search_form" type="search"  aria-label="Search" name="q"
+                    value="{{q}}">
+                <button class="btn btn-outline-success my-2 my-sm-0 search_btn" type="submit"></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<body>
+    {% block content %}
+    {% endblock %}
+    {% if posts.has_previous %}
+    <!-- <a href="?page=1"><-</a> -->
+    <a href="?page={{posts.previous_page_number}}">
+    <-</a> 
+    {% endif %} 
+    {% if posts.has_next %} 
+    <a href="?page={{posts.next_page_number}}">->
+    </a>
+    {% endif %}
+</body>
+<script type="text/javascript">
+$('#plus').click(function () {
+      $('.dropdown').toggleClass('on');
+      $('.container').toggleClass('on');
+    })
+
+</script>
+</html>

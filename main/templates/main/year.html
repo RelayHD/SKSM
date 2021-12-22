@@ -1,0 +1,32 @@
+{% extends 'main/index.html' %}
+{% block content %}
+{% for p in posts %}
+    <hr />
+    <div>
+        <pre>{{p.title}}</pre>
+    </div>
+    <div>
+        <pre>{{p.paragraph_1}}</pre>
+    </div>
+    <div>
+        <pre>{{p.paragraph_2}}</pre>
+    </div>
+
+    {% if p.first_image %}
+    <img src="{{ p.first_image.url }}" alt="">
+    {% endif %}
+
+    {% for img in p.images.all %}
+    <img src="{{ img.image.url }}" alt="">
+    <script>
+        console.log("{{ img.image.url }}")
+    </script>
+    {% endfor %}
+    <div>
+        <pre>{{p.paragraph_3}}</pre>
+    </div>
+    <div>
+        <pre>{{p.paragraph_4}}</pre>
+    </div>
+    {% endfor %}
+    {% endblock %}
