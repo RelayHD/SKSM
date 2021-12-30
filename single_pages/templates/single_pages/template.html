@@ -1,15 +1,15 @@
 {% extends 'main/index.html' %}
 {% block content %}
+
 <body>
     <hr/>
     {% for post in p %}
     <div class="article">
-        <div class="txt_title">{{post.title}}</div>
     <div class="txt_row">
-        <div>{{post.paragraph_1|linebreaksbr}}</div>
-        <div>{{post.paragraph_2|linebreaksbr}}</div>
-        <div>{{post.paragraph_3|linebreaksbr}}</div>
-        <div>{{post.paragraph_4|linebreaksbr}}</div>
+        <div>{{post.paragraph_1|safe|linebreaksbr}}</div>
+        <div>{{post.paragraph_2|safe|linebreaksbr}}</div>
+        <div>{{post.paragraph_3|safe|linebreaksbr}}</div>
+        <div>{{post.paragraph_4|safe|linebreaksbr}}</div>
     </div>
     </div>
     {% endfor %}

@@ -10,7 +10,7 @@ class Post(models.Model):
 
 class Textrow(models.Model):
     level= models.ForeignKey(Post, related_name="textrow", on_delete= models.CASCADE)
-    row_number= models.IntegerField(blank=False, null=False)
+    row_number= models.IntegerField(blank=True, null=True)
     paragraph_1= models.TextField(blank=True, null=True)
     paragraph_2= models.TextField(blank=True, null=True)
     paragraph_3= models.TextField(blank=True, null=True)
