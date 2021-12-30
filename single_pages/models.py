@@ -10,4 +10,4 @@ class SinglePost(models.Model):
     created_at= models.DateTimeField()
 
     def __str__(self):
-        return f'[{self.pk}]{self.tag}'
+        return f'[{self.pk}] {self.tag}'

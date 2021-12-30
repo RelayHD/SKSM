@@ -2,11 +2,11 @@ from django.shortcuts import render,get_object_or_404,redirect
 from django.urls.resolvers import URLPattern
 from django.core.paginator import Paginator
 from .models import Post
-from django.views.generic import CreateView
+from single_pages import models as singe_model
 
 def index(request):
     posts= Post.objects.all().order_by('-created_at')
-    
+    indi_pages= singe_model.SinglePost.objects.all().order_by('tag')
     years=[]
     for post in posts:
         created_at= post.created_at
@@ -23,11 +23,13 @@ def index(request):
         {
             'years':years,
             'posts':post_a_page,
+            'indi': indi_pages
         }
     )
 
 def single_post_page(request, pk):
     posts= Post.objects.all().order_by('-created_at')
+    indi_pages= singe_model.SinglePost.objects.all().order_by('tag')
 
     post= Post.objects.get(pk=pk)
     
@@ -44,12 +46,15 @@ def single_post_page(request, pk):
         {
             'years': years,
             'p': post,
+            'indi': indi_pages
+
         }
     )
 
 def search(request):
     posts= Post.objects.all().order_by('-created_at')
-    
+    indi_pages= singe_model.SinglePost.objects.all().order_by('tag')
+    print("된다")
     years=[]
     for post in posts:
         created_at= post.created_at
@@ -58,19 +63,21 @@ def search(request):
     years= list(set(years))
     years.sort(reverse=True)
     q= request.POST.get('q',"")
-
+    
+    print(q)
     if q:
         posts= posts.filter(title__icontains=q)
         paginator = Paginator(posts, 5)
         page= request.GET.get('page')
         post_a_page= paginator.get_page(page)
-        return render(request, 'main/postlist.html', {'years':years,'posts':post_a_page,'q' : q})
+        return render(request, 'main/postlist.html', {'years':years,'posts':post_a_page, 'indi': indi_pages,"q":q})
     else:
-        return render(request, 'main/postlist.html', {'years':years})
+        return render(request, 'main/postlist.html', {'years':years, 'indi': indi_pages,"q":q})
+
 
 def year(request, year):
     posts= Post.objects.all().order_by('-created_at')
-
+    indi_pages= singe_model.SinglePost.objects.all().order_by('tag')
     years=[]
     for post in posts:
         created_at= post.created_at
@@ -85,10 +92,6 @@ def year(request, year):
         paginator = Paginator(posts, 5)
         page= request.GET.get('page')
         post_a_page= paginator.get_page(page)
-        return render(request, 'main/postlist.html', {'years':years,'posts':post_a_page})
+        return render(request, 'main/postlist.html', {'years':years,'posts':post_a_page, 'indi': indi_pages})
     else:
-        return render(request, 'main/postlist.html', {'years':years})
-
-class PostCreate(CreateView):
-    model= Post
-    fields= ["title", "created_at", "first_image"]
+        return render(request, 'main/postlist.html', {'years':years, 'indi': indi_pages})

@@ -6,5 +6,4 @@ urlpatterns= [
     path('', views.index),
     path('search/', views.search, name='search'),
     path('year/<int:year>',views.year, name='year'),
-    path('create_post/', views.PostCreate.as_view()),
 ]

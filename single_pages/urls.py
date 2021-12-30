@@ -7,7 +7,6 @@ from django.urls.conf import include
 
 
 urlpatterns= [
-    path('profile/', views.profile),
-    path('contact/', views.contact),
+    path('info/<str:tag>/', views.single_page),
     path('', include('main.urls')),
 ]

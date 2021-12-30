@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="sksm">
-    <meta property="og:type" content=”website">
+    <meta property="og:type" content="website">
     <meta property="og:title" content="sksm">
     <meta property="og:description" content="sksm">
     <meta property="og:image" content="">
@@ -27,7 +27,10 @@
     </nav>
     <div class="dropdown">
        <div class="nav_menu">
-        <a class="nav_menu" href="/profile/">김성구</a><a class="nav_menu" href="/profile/"> SKSM </a></div>
+            {% for i in indi %}
+            <a class="nav_menu" href="info/{{i.tag}}/">{{i.title}}</a>
+            {% endfor %}
+        </div>
         <div class="nav_menu">
             {% for year in years %}
             <a class="nav_menu" href="/year/{{year}}">{{year}}</a>
@@ -50,7 +53,6 @@
         {% endblock %}
         <div class="footer">
         {% if posts.has_previous %}
-        <!-- <a href="?page=1"><-</a> -->
         <a href="?page={{posts.previous_page_number}}">
         <div class="btn_prev"></div></a> 
         {% else %}

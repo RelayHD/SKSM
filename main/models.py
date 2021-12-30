@@ -6,7 +6,7 @@ class Post(models.Model):
     first_image= models.ImageField(blank=True, null=True)
 
     def __str__(self):
-        return f'[{self.pk}]{self.title}'
+        return f'[{self.pk}] {self.title}'
 
 class Textrow(models.Model):
     level= models.ForeignKey(Post, related_name="textrow", on_delete= models.CASCADE)
