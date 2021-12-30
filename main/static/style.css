@@ -64,7 +64,7 @@
 body{
     background-color: #e6e7e8;
     font-family:'Pretendard';
-    font-size: 14px;
+    font-size: 12px;
     margin:0;
     padding:0;
 }
@@ -139,7 +139,7 @@ nav{
     padding:10px 0px;
 }
 .article{
-margin: 160px 0px;
+margin: 90px 0px;
 }
 .nav_container{
     position:fixed;
@@ -240,6 +240,7 @@ margin: 160px 0px;
 .footer{
     display:flex;
     height:32px;
+    margin:40px 0px 0px 0px;
     align-items:center;
     bottom:15px;
     justify-content: space-between;
