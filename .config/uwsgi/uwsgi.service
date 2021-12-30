@@ -2,7 +2,7 @@ Description=uWSGI service
 After=syslog.target
 
 [Service]
-ExecStart=/home/ubuntu/myvenv/bin/uwsgi -i /srv/SGKM/.config/uwsgi/sgkm_web.ini
+ExecStart=/home/ubuntu/myvenv/bin/uwsgi -i /srv/SKSM/.config/uwsgi/sgkm_web.ini
 
 Restart=always
 KillSignal=SIGQUIT
