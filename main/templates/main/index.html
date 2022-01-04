@@ -26,10 +26,11 @@
         <div class="nav btn" id="plus">&</div>
     </nav>
     <div class="dropdown">
-       <div class="nav_menu">
-        {% for i in indi %}
-        <a class="nav_menu" href="/info/{{i.tag}}">{{i.title}}</a>
-        {% endfor %}
+        <div class="nav_menu">
+            {% for i in indi %}
+            <a class="nav_menu" href="/info/{{i.tag}}">{{i.title}}</a>
+            {% endfor %}
+        </div>
         <div class="nav_menu">
             {% for year in years %}
             <a class="nav_menu" href="/year/{{year}}">{{year}}</a>
@@ -38,8 +39,8 @@
         <div class="nav_menu">
             <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="post">
                 {% csrf_token %}
-                <input class="form-control mr-sm-2 search_form" type="text"  aria-label="Search" name="q"
-                    value="{{q}}" autocomplete="off">
+                <input class="form-control mr-sm-2 search_form" type="text" aria-label="Search" name="q" value="{{q}}"
+                    autocomplete="off">
                 <button class="btn btn-outline-success my-2 my-sm-0 search_btn" type="submit"></button>
             </form>
         </div>
