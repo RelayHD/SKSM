@@ -27,7 +27,9 @@
     </nav>
     <div class="dropdown">
        <div class="nav_menu">
-        <a class="nav_menu" href="/profile/">김성구</a><a class="nav_menu" href="/profile/"> SKSM </a></div>
+        {% for i in indi %}
+        <a class="nav_menu" href="/info/{{i.tag}}">{{i.title}}</a>
+        {% endfor %}
         <div class="nav_menu">
             {% for year in years %}
             <a class="nav_menu" href="/year/{{year}}">{{year}}</a>
