@@ -64,7 +64,7 @@
 body{
     background-color: #e6e7e8;
     font-family:'Pretendard';
-    font-size: 12px;
+    font-size: 15px;
     margin:0;
     padding:0;
 }
@@ -102,7 +102,7 @@ nav{
 .nav_menu{
     text-decoration: none;
     color:black;
-    margin:5px 0px;
+    margin:7px 0px;
     display:block;
     width:100%;
 }
@@ -151,7 +151,7 @@ margin: 90px 0px;
 }
 
 .txt_title{
-    font-size:12px;
+    font-size:15px;
     margin:30px;
 }
 .txt_row{
@@ -164,8 +164,8 @@ margin: 90px 0px;
     column-gap: 2rem;
 }
 .txt_row div{
-    font-size:12px;
-    line-height:18px;
+    font-size:15px;
+    line-height:22px;
     text-align: left;
     /* white-space:pre; */
 
@@ -185,21 +185,20 @@ margin: 90px 0px;
     right: 0px;
 }
 .form-inline.my-2.my-lg-0{
-    height:30px;
+    height:33px;
     width:50%;
     padding:0px;
     position:relative;
 }
 .search_form{
-    display:block;
-    background-color:transparent;
-    outline:none;
-    border:none;
-    background-color:white;
-    border-radius:20px;
-    padding:8px 20px;
-    font-size:12px;
-    width:calc(100% - 28px);
+    display: block;
+    outline: none;
+    border: none;
+    background-color: white;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 15px;
+    width: calc(100% - 35px);
     box-sizing: border-box;
 }
 .btn{
@@ -299,4 +298,4 @@ margin: 90px 0px;
         width:25px;
         height:16px;
     }
-}    
+}
