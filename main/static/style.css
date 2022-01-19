@@ -85,7 +85,7 @@ img{
     height:auto;
 }
 pre{
-    font-family: 'sksmGothic';
+    font-family: 'Pretendard';
     display:block;
 }
 nav{
@@ -172,14 +172,14 @@ margin: 90px 0px;
 }
 .search_btn{
     background-image: url('search.svg');
-    width:28px;
-    height:28px;
-    outline:none;
-    background-color:transparent;
-    background-position:center center;
-    background-size:20px;
-    background-repeat:no-repeat;
-    border:none;
+    width: 33px;
+    height: 33px;
+    outline: none;
+    background-color: transparent;
+    background-position: center center;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    border: none;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -192,13 +192,14 @@ margin: 90px 0px;
 }
 .search_form{
     display: block;
+    background-color: transparent;
     outline: none;
     border: none;
     background-color: white;
     border-radius: 20px;
     padding: 8px 20px;
     font-size: 15px;
-    width: calc(100% - 35px);
+    width: calc(100% - 38px);
     box-sizing: border-box;
 }
 .btn{
